@@ -26,11 +26,13 @@ variable "vpc_private_subnets" {
 variable "instance_type_nginx" {
   type        = string
   description = "Type for EC2 Instance"
+  default     = "t2.micro"
 }
 
 variable "instance_type_db" {
   type        = string
   description = "Type for EC2 Instance"
+  default     = "t2.micro"
 }
 
 variable "instance_count_nginx" {
@@ -57,6 +59,7 @@ variable "encrypted_disk_size_nginx" {
 variable "encrypted_disk_device_name_nginx" {
   description = "The name of the device of secondary encrypted disk"
   type        = string
+  default     = "xvdh"
 }
 
 variable "volumes_type" {
