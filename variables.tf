@@ -9,14 +9,24 @@ variable "vpc_cidr_block" {
   description = "CIDR block of VPC"
 }
 
+# variable "vpc_public_subnets" {
+#   type        = map
+#   description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
+# }
+
+# variable "vpc_private_subnets" {
+#   type        = map
+#   description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
+# }
+
 variable "vpc_public_subnets" {
-  type        = map
-  description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
+  type = list(string)
+  description = "Desired public_subnets as list of strings"
 }
 
 variable "vpc_private_subnets" {
-  type        = map
-  description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
+  type = list(string)
+  description = "Desired private_subnets as list of strings"
 }
 
 #INSTANCES vars
