@@ -7,7 +7,7 @@ resource "aws_instance" "bastion" {
   count                       = var.instance_count_bastion
   ami                         = var.ami_bastion
   instance_type               = var.instance_type
-  subnet_id                   = keys(var.vpc_public_subnets)[count.index]
+  subnet_id                   = var.vpc_public_subnets[count.index]
   vpc_security_group_ids      = [aws_security_group.bastion_sg.id]
   key_name                    = var.key_name
   associate_public_ip_address = "true"
@@ -39,7 +39,7 @@ resource "aws_instance" "consul_server" {
   count                       = var.instance_count_consul
   ami                         = var.ami_consul
   instance_type               = var.instance_type
-  subnet_id                   = keys(var.vpc_private_subnets)[count.index % length(keys(var.vpc_private_subnets))]
+  subnet_id                   = var.vpc_private_subnets[count.index % length(var.vpc_private_subnets)]
   vpc_security_group_ids      = [aws_security_group.consul_sg.id]
   key_name                    = var.key_name
   iam_instance_profile        = var.iam_instance_profile_consul
