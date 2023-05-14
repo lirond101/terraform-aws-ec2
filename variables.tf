@@ -83,10 +83,10 @@ variable "key_name" {
   description = "key variable for refrencing"
 }
 
-# variable "user_data_consul" {
-#   type        = string
-#   description = "user_data for launching consul"
-# }
+variable "user_data_consul" {
+  type        = string
+  description = "user_data for launching consul"
+}
 
 variable "ami_bastion" {
   type        = string

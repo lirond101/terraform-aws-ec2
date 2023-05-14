@@ -43,8 +43,8 @@ resource "aws_instance" "consul_server" {
   vpc_security_group_ids      = [aws_security_group.consul_sg.id]
   key_name                    = var.key_name
   iam_instance_profile        = var.iam_instance_profile_consul
-  # user_data                   = var.user_data_consul
-  user_data                   = file("${path.module}/scripts/consul-server.sh")
+  user_data                   = var.user_data_consul
+  # user_data                   = file("${path.module}/scripts/consul-server.sh")
 
   root_block_device {
     encrypted   = false
