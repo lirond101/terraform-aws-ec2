@@ -26,7 +26,8 @@ resource "aws_instance" "bastion" {
   }
   
   tags = merge(var.common_tags, {
-    Name = "${var.name_prefix}-bastion-${count.index+1}"
+    Name = "${var.name_prefix}-bastion-${count.index+1}",
+    Type = "bastion"
   }) 
 }
 
