@@ -9,16 +9,6 @@ variable "vpc_cidr_block" {
   description = "CIDR block of VPC"
 }
 
-# variable "vpc_public_subnets" {
-#   type        = map
-#   description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
-# }
-
-# variable "vpc_private_subnets" {
-#   type        = map
-#   description = "a map of subnet id to cidr block, e.g. subnet_1234 => 10.0.1.0/4"
-# }
-
 variable "vpc_public_subnets" {
   type = list(string)
   description = "Desired public_subnets as list of strings"
@@ -42,9 +32,9 @@ variable "instance_count_bastion" {
   description = "Number of bastion instances to create in VPC"
 }
 
-variable "instance_count_consul" {
+variable "instance_count_db" {
   type        = number
-  description = "Number of consul instances to create in VPC"
+  description = "Number of db instances to create in VPC"
 }
 
 variable "root_disk_size_bastion" {
@@ -57,12 +47,12 @@ variable "encrypted_disk_size_bastion" {
   default     = 20
 }
 
-variable "root_disk_size_consul" {
+variable "root_disk_size_db" {
   description = "The size of the root disk"
   default     = 10
 }
 
-variable "encrypted_disk_size_consul" {
+variable "encrypted_disk_size_db" {
   description = "The size of the secondary encrypted disk"
   default     = 10
 }
@@ -83,22 +73,17 @@ variable "key_name" {
   description = "key variable for refrencing"
 }
 
-variable "user_data_consul" {
-  type        = string
-  description = "user_data for launching consul"
-}
-
 variable "ami_bastion" {
   type        = string
   description = "ami of bastion instance"
 }
 
-variable "ami_consul" {
+variable "ami_db" {
   type        = string
-  description = "ami of consul instance"
+  description = "ami of db instance"
 }
 
-variable "iam_instance_profile_consul" {
+variable "iam_instance_profile_db" {
   type        = string
   description = "iam instance profile"
 }
