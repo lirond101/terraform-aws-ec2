@@ -58,7 +58,8 @@ resource "aws_instance" "db_server" {
   }
   
   tags = merge(var.common_tags, {
-    Name = "${var.name_prefix}-db-${count.index+1}"
+    Name = "${var.name_prefix}-db-${count.index+1}",
+    Type = "db"
   }) 
 }
 
