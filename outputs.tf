@@ -2,10 +2,10 @@ output "bastion_servers" {
   value = aws_instance.bastion.*.public_ip
 }
 
-output "consul_servers" {
-  value = aws_instance.consul_server.*.private_ip
+output "db_servers" {
+  value = aws_instance.db_server.*.private_ip
 }
 
-output "aws_consul_ids" {
-  value = aws_instance.consul_server.*.id
+output "aws_db_ids" {
+  value = aws_instance.db_server.*.id
 }
