@@ -105,9 +105,19 @@ resource "aws_security_group" "db_sg" {
 
 resource "aws_security_group_rule" "db_allow_postgres_from_vpc" {
  type              = "ingress"
- description       = "Allow all access from VPC"
+ description       = "Allow db connection port access from VPC"
  from_port         = 5432
  to_port           = 5432
+ protocol          = "tcp"
+ cidr_blocks       = [var.vpc_cidr_block]
+ security_group_id = aws_security_group.db_sg.id
+}
+
+resource "aws_security_group_rule" "db_allow_prometheus_from_vpc" {
+ type              = "ingress"
+ description       = "Allow prometheus exporter access from VPC"
+ from_port         = 9100
+ to_port           = 9100
  protocol          = "tcp"
  cidr_blocks       = [var.vpc_cidr_block]
  security_group_id = aws_security_group.db_sg.id
